@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>FCC ISQA Project - Personal Library</title>
+    <meta name="description" content="A cool thing made with HyperDev">
+    <link id="favicon" rel="icon" href="https://hyperdev.com/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/public/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        <b>FCC Project #3</b> - Personal Library
+
+      </h1>
+        <p>Programmed By: Brendan Musick</p>
+    </header>
+    <br>
+    <hr style='margin: 50px'>
+
+    <hr style='margin: 50px'>
+    <div id='sampleui'>
+      <h2 style="text-align: left">Sample Front-End:</h2>
+      <form id="newBookForm" class="border" action="/api/books" method="post">
+        <input type="text" id="bookTitleToAdd" name="title" placeholder="New Book Title" style="width: 295px">
+        <button type="submit" value="Submit" id="newBook">Submit New Book!</button>
+      </form>
+      <div id='display'></div>          
+      <h3>Select A Book</h3>
+      <div class="books-container">
+        <%books.forEach(book=>{%>
+        
+          <div class="book-container">
+            <h5><%=book.title%></h5>
+            <p>Comment Count: <%=book.commentcount%></p>
+            <form action="/api/books/<%=book._id%>?_method=DELETE" method="POST">
+              <button id='deleteBook'>Delete <%=book.title%></button>
+            </form>
+            <form action="/api/books/<%=book._id%>" method="post" id="commentTest" class="border">
+              <input type="hidden" name="id" value="<%=book._id%>" id="idinputtest"><br>
+              Create Comment:<br>
+              <input type="text" name="comment" value=""><br>
+              <input type="submit" value="Submit">
+            </form>
+            <a href="/api/books/<%=book._id%>"><input type="button" value="View Book"></a>
+          </div>
+        
+ 
+      
+      <%})%>
+      </div>
+
+      <form action="/api/books?_method=DELETE" method="POST">
+        <button id='deleteAllBooks'>Delete all books...</button>
+      </form>
+    </div>
+    <hr style='margin: 50px'>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script src="/public/client.js"></script>           
+    <script>
+      /*
+      *  For #sampleposting to update form action url to test inputs book id
+      */
+      $(function() {
+       $('#commentTest').submit(function(){
+         var id = $('#idinputtest').val();
+         $(this).attr('action', "/api/books/" + id);
+       });
+      });
+   </script>
+  </body>
+</html>

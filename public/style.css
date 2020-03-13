@@ -1,0 +1,48 @@
+.border {
+  border-style: inset;
+  border-width: 1px;
+  margin: 10px;
+}
+
+#sampleui {
+  max-width: 450px;
+  margin-left: 5%;
+  height: 100%;
+}
+
+#sampleposting {
+  max-width: 450px;
+  text-align: center;
+  margin-left: 5%;
+}
+
+#userstories {
+  margin-left: 5%;
+}
+
+form {
+  padding: 5px;
+}
+
+.books-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-container{
+  background-color: dodgerblue;
+  padding: 0 20px;
+}
+
+.books-container  a{
+  all:unset;
+}
+.books-container a:hover{
+  filter: brightness(125%);
+}
+
+h3{
+  width: 100%;
+  background-color: sienna;
+  text-align: center;
+}
